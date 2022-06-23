@@ -34,9 +34,9 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
-<?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.TableColumn?>
@@ -88,20 +88,30 @@
                      <textFill>
                 <Color red="0.624" green="0.624" blue="0.624" fx:id="x2" />
                      </textFill></Label>
-                  <ListView id="details_list" layoutY="39.0" prefHeight="528.0" prefWidth="221.0" />
+                  <TextField id="user_lastname_input" layoutX="30.0" layoutY="85.0" />
+                  <TextField id="user_deskphone_input" layoutX="28.0" layoutY="217.0" />
+                  <TextField id="user_cellphone_input" layoutX="30.0" layoutY="173.0" />
+                  <TextField id="user_firstname_input" layoutX="30.0" layoutY="129.0" />
+                  <TextField id="user_mail_input" layoutX="30.0" layoutY="261.0" />
+                  <ChoiceBox id="user_service_selector" layoutX="28.0" layoutY="305.0" prefHeight="26.0" prefWidth="162.0" />
+                  <ChoiceBox id="user_place_selector" layoutX="28.0" layoutY="349.0" prefHeight="26.0" prefWidth="162.0" />
+                  <Label layoutX="33.0" layoutY="67.0" text="Nom" />
+                  <Label layoutX="30.0" layoutY="111.0" text="Prénom" />
+                  <Label layoutX="32.0" layoutY="155.0" text="Numéro portable" />
+                  <Label layoutX="32.0" layoutY="199.0" text="Numéro fixe" />
+                  <Label layoutX="31.0" layoutY="243.0" text="Adresse mail" />
+                  <Label layoutX="32.0" layoutY="287.0" text="Service" />
+                  <Label layoutX="26.0" layoutY="331.0" text="Ville" />
+                  <Button id="update_user_button" layoutX="138.0" layoutY="447.0" mnemonicParsing="false" text="Valider" textFill="#03ae3f" />
           </children>
         </AnchorPane>
       </items>
     </SplitPane>
     <HBox id="HBox" alignment="CENTER_LEFT" spacing="5.0" VBox.vgrow="NEVER">
       <children>
-            <Button id="admin_button" mnemonicParsing="false" text="Administration" />
-        <Pane prefHeight="-1.0" prefWidth="-1.0" HBox.hgrow="ALWAYS">
-               <children>
-                  <PasswordField id="admin_password_input" />
-                  <Button id="admin_validate_button" layoutX="161.0" mnemonicParsing="false" text="Passer en administrateur" />
-               </children></Pane>
-        <Label id="user_rights" maxWidth="-1.0" text="Utilisateur" HBox.hgrow="NEVER">
+            <Button id="admin_button" mnemonicParsing="false" text="Déconnexion" />
+        <Pane prefHeight="-1.0" prefWidth="-1.0" HBox.hgrow="ALWAYS" />
+        <Label id="user_rights" maxWidth="-1.0" text="Administrateur" HBox.hgrow="NEVER">
                <font>
             <Font size="11.0" fx:id="x3" />
                </font>
