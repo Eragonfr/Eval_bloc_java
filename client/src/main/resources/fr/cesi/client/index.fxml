@@ -1,117 +1,61 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<!--
-  Copyright (c) 2015, 2019, Gluon and/or its affiliates.
-  All rights reserved. Use is subject to license terms.
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
 
-  This file is available and licensed under the following license:
-
-  Redistribution and use in source and binary forms, with or without
-  modification, are permitted provided that the following conditions
-  are met:
-
-  - Redistributions of source code must retain the above copyright
-    notice, this list of conditions and the following disclaimer.
-  - Redistributions in binary form must reproduce the above copyright
-    notice, this list of conditions and the following disclaimer in
-    the documentation and/or other materials provided with the distribution.
-  - Neither the name of Oracle Corporation nor the names of its
-    contributors may be used to endorse or promote products derived
-    from this software without specific prior written permission.
-
-  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
-  "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
-  LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
-  A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
-  OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
-  SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
-  LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
-  DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
-  THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
-  (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
-  OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
--->
-
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ListView?>
-<?import javafx.scene.control.PasswordField?>
-<?import javafx.scene.control.ScrollPane?>
-<?import javafx.scene.control.SplitPane?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.Pane?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.paint.Color?>
-<?import javafx.scene.text.Font?>
-
-<VBox prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
-  <children>
-    <SplitPane dividerPositions="0.15812917594654788, 0.7505567928730512" focusTraversable="true" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
-      <items>
-        <AnchorPane>
-               <children>
-                  <ListView id="service_list" layoutX="-1.0" layoutY="30.0" prefHeight="254.0" prefWidth="139.0" />
-                  <Label layoutX="4.0" layoutY="5.0" prefHeight="25.0" prefWidth="131.0" text="Services" />
-                  <Label layoutX="2.0" layoutY="284.0" prefHeight="18.0" prefWidth="131.0" text="Villes" />
-                  <ListView id="place_list" layoutX="-2.0" layoutY="302.0" prefHeight="261.0" prefWidth="139.0" />
-               </children>
-        </AnchorPane>
-        <ScrollPane>
-          <content>
-            <AnchorPane id="Content" minHeight="-1.0" minWidth="-1.0" prefHeight="564.0" prefWidth="525.0">
-              <children>
-                        <TableView id="user_list" layoutY="58.0" prefHeight="506.0" prefWidth="526.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-1.0" AnchorPane.topAnchor="58.0">
-                          <columns>
-                            <TableColumn id="lastname_column" prefWidth="124.0" text="Nom" />
-                            <TableColumn id="firstname_column" prefWidth="147.0" text="Prénom" />
-                              <TableColumn id="service_column" prefWidth="123.0" text="Service" />
-                              <TableColumn id="place_column" prefWidth="131.0" text="Ville" />
-                          </columns>
-                        </TableView>
-                        <Button id="seach_button" layoutX="437.0" layoutY="14.0" mnemonicParsing="false" text="Chercher" />
-                        <TextField id="search_input" layoutX="14.0" layoutY="14.0" prefHeight="26.0" prefWidth="424.0" />
-              </children>
-            </AnchorPane>
-          </content>
-        </ScrollPane>
-        <AnchorPane>
-          <children>
-            <Label alignment="CENTER" layoutX="14.0" layoutY="14.0" style="&#10;" text="Details" textAlignment="CENTER" wrapText="false">
-                     <font>
-                <Font size="18.0" fx:id="x1" />
-                     </font>
-                     <textFill>
-                <Color red="0.624" green="0.624" blue="0.624" fx:id="x2" />
-                     </textFill></Label>
-                  <ListView id="details_list" layoutY="39.0" prefHeight="528.0" prefWidth="221.0" />
-          </children>
-        </AnchorPane>
-      </items>
-    </SplitPane>
-    <HBox id="HBox" alignment="CENTER_LEFT" spacing="5.0" VBox.vgrow="NEVER">
-      <children>
-            <Button id="admin_button" mnemonicParsing="false" text="Administration" />
-        <Pane prefHeight="-1.0" prefWidth="-1.0" HBox.hgrow="ALWAYS">
-               <children>
-                  <PasswordField id="admin_password_input" />
-                  <Button id="admin_validate_button" layoutX="161.0" mnemonicParsing="false" text="Passer en administrateur" />
-               </children></Pane>
-        <Label id="user_rights" maxWidth="-1.0" text="Utilisateur" HBox.hgrow="NEVER">
-               <font>
-            <Font size="11.0" fx:id="x3" />
-               </font>
-               <textFill>
-            <Color red="0.625" green="0.625" blue="0.625" fx:id="x4" />
-               </textFill></Label>
-      </children>
-      <padding>
-        <Insets bottom="3.0" left="3.0" right="3.0" top="3.0" />
-      </padding>
-    </HBox>
-  </children>
+<VBox prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.cesi.client.IndexController">
+  <SplitPane dividerPositions="0.15812917594654788, 0.7505567928730512" focusTraversable="true" VBox.vgrow="ALWAYS">
+    <AnchorPane>
+      <ListView id="service_list" fx:id="service_list" layoutX="-1.0" layoutY="30.0" prefHeight="254.0" prefWidth="139.0" />
+      <Label layoutX="4.0" layoutY="5.0" prefHeight="25.0" prefWidth="131.0" text="Services" />
+      <Label layoutX="2.0" layoutY="284.0" prefHeight="18.0" prefWidth="131.0" text="Villes" />
+      <ListView id="place_list" fx:id="place_list" layoutX="-2.0" layoutY="302.0" prefHeight="261.0" prefWidth="139.0" />
+    </AnchorPane>
+    <ScrollPane>
+      <AnchorPane id="Content" prefHeight="564.0" prefWidth="525.0">
+        <TableView id="user_list" fx:id="user_list" layoutY="58.0" prefHeight="506.0" prefWidth="526.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-1.0" AnchorPane.topAnchor="58.0">
+          <columns>
+            <TableColumn id="lastname_column" fx:id="lastname_column" prefWidth="124.0" text="Nom" />
+            <TableColumn id="firstname_column" fx:id="firstname_column" prefWidth="147.0" text="Prénom" />
+            <TableColumn id="service_column" fx:id="service_column" prefWidth="123.0" text="Service" />
+            <TableColumn id="place_column" fx:id="place_column" prefWidth="131.0" text="Ville" />
+          </columns>
+        </TableView>
+        <Button id="search_button" fx:id="search_button" layoutX="437.0" layoutY="14.0" mnemonicParsing="false" onAction="#handleButtonAction" text="Chercher" />
+        <TextField id="search_input" fx:id="search_input" layoutX="14.0" layoutY="14.0" prefHeight="26.0" prefWidth="424.0" />
+      </AnchorPane>
+    </ScrollPane>
+    <AnchorPane>
+      <Label alignment="CENTER" layoutX="14.0" layoutY="14.0" style="&#10;" text="Details" textAlignment="CENTER">
+        <font>
+          <Font size="18.0" fx:id="x1" />
+        </font>
+        <textFill>
+          <Color red="0.624" green="0.624" blue="0.624" fx:id="x2" />
+        </textFill>
+      </Label>
+      <ListView id="details_list" fx:id="details_list" layoutY="39.0" prefHeight="528.0" prefWidth="221.0" />
+    </AnchorPane>
+  </SplitPane>
+  <HBox id="HBox" alignment="CENTER_LEFT" spacing="5.0" VBox.vgrow="NEVER">
+    <padding>
+      <Insets bottom="3.0" left="3.0" right="3.0" top="3.0" />
+    </padding>
+    <Button id="admin_button" fx:id="admin_button" mnemonicParsing="false" text="Administration" />
+    <Pane HBox.hgrow="ALWAYS">
+      <PasswordField id="admin_password_input" fx:id="admin_password_input" />
+      <Button id="admin_validate_button" fx:id="admin_validate_button" layoutX="161.0" mnemonicParsing="false" text="Passer en administrateur" />
+    </Pane>
+    <Label id="user_rights" text="Utilisateur" HBox.hgrow="NEVER">
+      <font>
+        <Font size="11.0" fx:id="x3" />
+      </font>
+      <textFill>
+        <Color red="0.625" green="0.625" blue="0.625" fx:id="x4" />
+      </textFill>
+    </Label>
+  </HBox>
 </VBox>

@@ -35,7 +35,7 @@ public class ConnectImpl implements Connect {
 
     try {
       Class.forName("org.postgresql.Driver");
-      connexion = DriverManager.getConnection("jdbc:postgresql://localhost/bloc", "eragon", "");
+      connexion = DriverManager.getConnection("jdbc:postgresql://localhost/bloc", "cesi", "");
     } catch (Exception e) {
       System.out.println(e);
     }
