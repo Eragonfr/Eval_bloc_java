@@ -8,9 +8,9 @@ import org.junit.jupiter.api.extension.ExtendWith;
 
 @ExtendWith(VertxExtension.class)
 public class TestDbConn {
-  private final String url = "jdbc:postgresql://localhost/stivedb";
-  private final String user = "kroutok";
-  private final String password = "pouet";
+  private final String url = "jdbc:postgresql://localhost/bloc";
+  private final String user = "eragon";
+  private final String password = "";
 
   @Test
   public static void printSQLException(SQLException ex) {

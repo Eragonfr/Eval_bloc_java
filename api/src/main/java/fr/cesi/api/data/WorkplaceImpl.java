@@ -1,8 +1,14 @@
 package fr.cesi.api.data;
 
-public class ServiceImpl implements Workplace {
+public class WorkplaceImpl implements Workplace {
   private int id;
   private String name;
+
+  public WorkplaceImpl() {}
+
+  public WorkplaceImpl(RegistrationWorkplace registrationWorkplace) {
+    this.name = registrationWorkplace.name;
+  }
 
   @Override
   public int getId() {

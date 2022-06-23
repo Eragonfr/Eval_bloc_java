@@ -5,7 +5,6 @@ package fr.cesi.api.data;
  */
 public class UserImpl implements User {
   private int id;
-  private String username;
   private String lastname;
   private String firstname;
   private String cellphone;
@@ -13,6 +12,18 @@ public class UserImpl implements User {
   private String mail;
   private Workplace service;
   private Workplace place;
+
+  public UserImpl() {}
+
+  public UserImpl(RegistrationUser registrationUser) {
+    this.firstname = registrationUser.firstname;
+    this.lastname = registrationUser.lastname;
+    this.cellphone = registrationUser.cellphone;
+    this.deskphone = registrationUser.deskphone;
+    this.mail = registrationUser.mail;
+    this.place = registrationUser.place;
+    this.service = registrationUser.service;
+  }
 
   // -- Getters --
   @Override

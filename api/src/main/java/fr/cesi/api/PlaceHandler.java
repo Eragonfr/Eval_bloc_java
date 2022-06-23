@@ -1,24 +1,24 @@
 package fr.cesi.api;
 
+import fr.cesi.api.dao.PlaceDao;
 import fr.cesi.api.dao.UserDao;
-import fr.cesi.api.data.RegistrationUser;
-import fr.cesi.api.data.SimpleHttpResult;
-import fr.cesi.api.data.User;
-import fr.cesi.api.data.UserImpl;
+import fr.cesi.api.data.*;
 import io.vertx.core.json.Json;
 import io.vertx.ext.web.RoutingContext;
 import org.jetbrains.annotations.NotNull;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class UserHandler {
-  public static void getUsers(@NotNull RoutingContext routingContext) {
+public class PlaceHandler {
+  public static void getPlaces(@NotNull RoutingContext routingContext) {
     try {
-      ArrayList<User> users = (ArrayList<User>) UserDao.searchUser("");
+      ArrayList<Workplace> places = PlaceDao.getPlaces();
+
       routingContext.response()
         .setStatusCode(200)
         .putHeader("content-type", "application/json; charset=utf-8")
-        .end(Json.encodePrettily(users));
+        .end(Json.encodePrettily(places));
     } catch (Exception e) {
       System.err.println(e);
 
@@ -29,14 +29,15 @@ public class UserHandler {
     }
   }
 
-  public static void getUser(@NotNull RoutingContext routingContext) {
+  public static void getPlace(@NotNull RoutingContext routingContext) {
     try {
-      User user = UserDao.getUser(Integer.parseInt(routingContext.pathParam("id")));
+      Workplace place = PlaceDao.getPlace(Integer.parseInt(routingContext.pathParam("id")));
+
       routingContext.response()
         .setStatusCode(200)
         .putHeader("content-type", "application/json; charset=utf-8")
-        .end(Json.encodePrettily(user));
-    } catch (NumberFormatException e) {
+        .end(Json.encodePrettily(place));
+    }catch (NumberFormatException e) {
       routingContext.response()
         .setStatusCode(400)
         .putHeader("content-type", "application/json; charset=utf-8")
@@ -51,9 +52,9 @@ public class UserHandler {
     }
   }
 
-  public static void deleteUser(@NotNull RoutingContext routingContext) {
+  public static void deletePlace(@NotNull RoutingContext routingContext) {
     try {
-      UserDao.deleteUser(Integer.parseInt(routingContext.pathParam("id")));
+      PlaceDao.deletePlace(Integer.parseInt(routingContext.pathParam("id")));
 
       routingContext.response()
         .setStatusCode(204)
@@ -74,13 +75,16 @@ public class UserHandler {
     }
   }
 
-  public static void searchUser(@NotNull RoutingContext routingContext) {
+  public static void updatePlace(@NotNull RoutingContext routingContext) {
     try {
-      ArrayList<User> users = (ArrayList<User>) UserDao.searchUser(routingContext.pathParam("search"));
+      Workplace workplace = Json.decodeValue(routingContext.getBodyAsString(), WorkplaceImpl.class);
+      int workplaceId = PlaceDao.updatePlace(workplace);
+      workplace.setId(workplaceId);
+
       routingContext.response()
-        .setStatusCode(200)
+        .setStatusCode(204)
         .putHeader("content-type", "application/json; charset=utf-8")
-        .end(Json.encodePrettily(users));
+        .end(Json.encodePrettily(workplace));
     } catch (Exception e) {
       System.err.println(e);
 
@@ -91,37 +95,15 @@ public class UserHandler {
     }
   }
 
-  public static void createUser(@NotNull RoutingContext routingContext) {
+  public static void createPlace(@NotNull RoutingContext routingContext) {
     try {
-      RegistrationUser registrationUser = Json.decodeValue(routingContext.getBodyAsString(), RegistrationUser.class);
-
-      @NotNull User user = UserDao.addUser(new UserImpl(registrationUser));
-
-      routingContext.response()
-        .setStatusCode(201)
-        .putHeader("content-type", "application/json; charset=utf-8")
-        .end(Json.encodePrettily(user));
-    } catch (Exception e) {
-      System.err.println(e);
+      RegistrationWorkplace registrationWorkplace = Json.decodeValue(routingContext.getBodyAsString(), RegistrationWorkplace.class);
+      Workplace workplace = PlaceDao.addPlace(new WorkplaceImpl(registrationWorkplace));
 
       routingContext.response()
-        .setStatusCode(500)
+        .setStatusCode(204)
         .putHeader("content-type", "application/json; charset=utf-8")
-        .end(Json.encodePrettily(new SimpleHttpResult(500, "Internal server error.")));
-    }
-  }
-
-  public static void updateUser(@NotNull RoutingContext routingContext) {
-    try {
-      UserImpl updateUser = Json.decodeValue(routingContext.getBodyAsString(), UserImpl.class);
-
-      int userId = UserDao.updateUser(updateUser);
-      updateUser.setId(userId);
-
-      routingContext.response()
-        .setStatusCode(201)
-        .putHeader("content-type", "application/json; charset=utf-8")
-        .end(Json.encodePrettily(updateUser));
+        .end(Json.encodePrettily(workplace));
     } catch (Exception e) {
       System.err.println(e);
 
